@@ -10,6 +10,7 @@ The original challenge can be found [here](https://github.com/tagup/ops-challeng
 2. In the Time-series tables:
    - Every row is sorted by ```timestamp``` and then sorted again by ```machine```
    - Every (```timestamp```, ```machine```) pair in ```feat_0``` are the same pairs in ```feat_1```, ```feat_2```, ```feat_3```
+   - Every row is recorded around about 8-hour intervals
 
 ## Section 2: Objectives
 1. Mapping the Time-series equipment data
