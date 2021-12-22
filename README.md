@@ -68,7 +68,7 @@ For this objective, there are two approaches that come to mind:
 +────────────+─────────+─────────+─────────+─────────+ /
 ```
 
-### Section 2.2: Cleaning the Timer-series equipment data
+### Section 2.2: Cleaning the Time-series equipment data
 Before Cleaning            |  After Cleaning
 :-------------------------:|:-------------------------:
 ![Box Plot before filtering](images/unfiltered_box_plot.PNG)  |  ![Box Plot after filtering](/images/filtered_box_plot.PNG)
