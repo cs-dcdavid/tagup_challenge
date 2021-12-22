@@ -71,7 +71,9 @@ For this objective, there are two approaches that come to mind:
 ### Section 2.2: Cleaning the Timer-series equipment data
 Before Cleaning            |  After Cleaning
 :-------------------------:|:-------------------------:
-![UNFILTERED](images/unfiltered_box_plot.png)  |  ![FILTERED](images/filtered_box_plot.png)
+<img src="/images/unfiltered_box_plot.PNG" width="1367" height="550"/>
+  |  <img src="/images/filtered_box_plot.PNG" width="1367" height="550"/>
+
 Interquartile Range (IQR) is a measurement of the spread of data. By filtering data points that are too far away from the typical value in a data set, we get to clean the outliers off of the data. This filtering is implemented in the ```remove_outliers``` function in ```data_frame_helper.py```:
 ```
 # remove_outliers(pandas DataFrame, [str]) -> pandas DataFrame
@@ -105,7 +107,8 @@ The second approach from Section 2.1 was used for two reasons:
   2.2 Does ```feat_2``` spike when the rest of the metrics do?
   2.3 If a few machines failed at a certain date, did any of the metrics give us insights related to the machine failure?
   2.4 etc
-![SCATTER](images/scatter_plot.png) 
+
+<img src="/images/scatter_plot.PNG" width="1367" height="550"/>
 
 Also, the data from Section 2.2 was cleaned off of outliers using IQR because:
 1. Data accuracy is essential in analysis. However, since the metrics are measured by physical sensors, some data points may be exaggerated by external factors which are generally not useful when tracking trends. For example, a wind farm in Texas may have measured that there was massive drop in temperature around February 13-17, 2021. By ignoring the data from that week, we avoid skewing the data to lower temperatures and avoid drawing false conclusions.
