@@ -13,7 +13,7 @@ The original challenge can be found [here](https://github.com/tagup/ops-challeng
 
 ## Section 2: Objectives
 1. Mapping the Time-series equipment data
-2. Cleaning the Timer-series equipment data
+2. Cleaning the Time-series equipment data
 3. Why is this design and approach effective?
 
 
