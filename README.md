@@ -5,11 +5,11 @@ The original challenge can be found [here](https://github.com/tagup/ops-challeng
 
 ## Section 1: First Impressions on the Data
 1. There are two kinds of tables in the ```exampleco_db.db``` database:
-  1.1. Time-series equipment data that for every machine, tracks equipment metrics that change over time such as the values of ```feat_0```, ```feat_1```, ```feat_2```, ```feat_3```
-  1.2. Static equipment data that for every machine, stores facts that are rarely (if ever) updated like a machine's location ```room```
+   - Time-series equipment data that for every machine, tracks equipment metrics that change over time such as the values of ```feat_0```, ```feat_1```, ```feat_2```, ```feat_3```
+   - Static equipment data that for every machine, stores facts that are rarely (if ever) updated like a machine's location ```room```
 2. In the Time-series tables:
-  2.1. Every row is sorted by ```timestamp``` and then sorted again by ```machine```
-  2.2. Every (```timestamp```, ```machine```) pair in ```feat_0``` are the same pairs in ```feat_1```, ```feat_2```, ```feat_3```
+   - Every row is sorted by ```timestamp``` and then sorted again by ```machine```
+   - Every (```timestamp```, ```machine```) pair in ```feat_0``` are the same pairs in ```feat_1```, ```feat_2```, ```feat_3```
 
 ## Section 2: Objectives
 1. Mapping the Time-series equipment data
@@ -90,8 +90,8 @@ def remove_outliers(df_in, cols):
 ### Section 2.3: Why is this design and approach effective?
 The second approach from Section 2.1 was used for two reasons:
 1. We save memory by eliminating redundant data. For example, ```feat_0```, ```feat_1```, ```feat_2```, ```feat_3``` all contain the data in the figure below, where the (```timestamp```, ```machine```) pairs are duplicates. By saving memory/storage where we can, we get to minimize server fees because those tend to be measured from two metrics:
-    1.1 Memory/storage space
-    1.2 Processing time, which is generally smaller when Memory/storage space is smaller
+   - Memory/storage space
+   - Processing time, which is generally smaller when Memory/storage space is smaller
 
 | timestamp | machine | value |
 | ------ | ------ | ------ |
@@ -102,10 +102,10 @@ The second approach from Section 2.1 was used for two reasons:
 | 2019-01-02 08:00:38.412804268 | machine_0 | [different values] |
 | ... | ... | ... |
 2. The first approach from Section 2.1 lets us see one metric (like ```feat_0```) for all machines, which is useful if we want the "big picture" of a certain metric on all of our machines. On the other hand, the implementation of the second approach takes in all the metrics (```feat_0```, ```feat_1```, ```feat_2```, ```feat_3```) of one machine. This lets us zoom in and see the relationship between the metrics over the lifespan of the machine, as seen in the figure below. For example, we can begin tackling the following questions:
-  2.1 Does ```feat_0``` increase or decrease when ```feat_1``` increases?
-  2.2 Does ```feat_2``` spike when the rest of the metrics do?
-  2.3 If a few machines failed at a certain date, did any of the metrics give us insights related to the machine failure?
-  2.4 etc
+   - Does ```feat_0``` increase or decrease when ```feat_1``` increases?
+   - Does ```feat_2``` spike when the rest of the metrics do?
+   - If a few machines failed at a certain date, did any of the metrics give us insights related to the machine failure?
+   - etc
 
 ![Scatter Plot after filtering](/images/filtered_scatter_plot.PNG)
 
